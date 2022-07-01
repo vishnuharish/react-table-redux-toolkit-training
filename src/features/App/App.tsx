@@ -1,5 +1,6 @@
 import React from "react";
+import {Userinfo} from "../userInfo/userInfo";
 
 export const App: React.FC<{}> = () => {
-	return (<h1>React Table with typescript and redux</h1>)
+	return ( <Userinfo/> );
 	}
