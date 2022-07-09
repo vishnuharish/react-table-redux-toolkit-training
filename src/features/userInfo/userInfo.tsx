@@ -4,12 +4,11 @@ import { RootState, AppDispatch } from '../../store';
 import {fetchAllUsers, UserInfoState} from './slices/userInfoSlice';
 import { Table } from '../../utilities/Table';
 import { UserInfoTableColumns } from './UserInforTableColumns';
-
+import './styles/userInfoStyles.scss';
 export const Userinfo: React.FC<{}> = () => {
 	const dispatch: AppDispatch = useDispatch();
 	const userInfo:UserInfoState = useSelector((state: RootState) => state.user_info)
 	const {loading, data, error} = userInfo;
-    const columns = {}; 
 	useEffect(() => {
 		dispatch(fetchAllUsers());
 	}, [])
@@ -17,7 +16,10 @@ export const Userinfo: React.FC<{}> = () => {
     const tableData = useMemo(() => data, [data])
     const tableColumn = useMemo(() => UserInfoTableColumns, [])
 	return(
-		<div>
+		<div className='userInfo'>
+            <div className="header">
+                <p>User Information</p>
+            </div>
             <Table data={tableData} columns={tableColumn}/>
 		</div>
 	)

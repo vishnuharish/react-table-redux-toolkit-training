@@ -1,0 +1,18 @@
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-item: center;
+        justify-content: center;
+        margin: 0.5rem 0rem;
+        width: 100%;
+        font-weight: 600;
+        font-size: 20px;
+        background-color: #04aa6d;
+        color: white;
+    }
+}

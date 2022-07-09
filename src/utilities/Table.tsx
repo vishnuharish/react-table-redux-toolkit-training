@@ -1,5 +1,6 @@
 import React from "react";
 import { useTable, usePagination } from "react-table";
+import './styles/Table.scss';
 interface TableProps {
     data: any;
     columns: any;
@@ -26,7 +27,7 @@ export const Table: React.FC<TableProps> = (props) => {
 
     return (
         <>
-            <table {...getTableProps()} border={1}>
+            <table {...getTableProps()} className="table">
                 <thead>
                     {headerGroups.map((headerGroup: any) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -55,7 +56,7 @@ export const Table: React.FC<TableProps> = (props) => {
                     })}
                 </tbody>
             </table>
-            <div>
+            <div className="table-footer">
                 <span>
                     Page {' '}
                         <strong>{pageIndex + 1} of {pageOptions.length}</strong>
