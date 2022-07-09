@@ -57,6 +57,7 @@ export const Table: React.FC<TableProps> = (props) => {
                 </tbody>
             </table>
             <div className="table-footer">
+                    <button disabled={!canPreviousPage} onClick={() => previousPage()}>{'Previous'}</button>
                 <span>
                     Page {' '}
                         <strong>{pageIndex + 1} of {pageOptions.length}</strong>
@@ -68,7 +69,6 @@ export const Table: React.FC<TableProps> = (props) => {
                                 }
                         </select>
                     </span>
-                    <button disabled={!canPreviousPage} onClick={() => previousPage()}>{'Previous'}</button>
                 <button disabled={!canNextPage} onClick={() => nextPage()}>{'Next'}</button>
             </div>
         </>
