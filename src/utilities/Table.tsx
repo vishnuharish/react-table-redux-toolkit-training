@@ -1,5 +1,5 @@
 import React from "react";
-import { useTable, usePagination } from "react-table";
+import { useTable, usePagination,useSortBy } from "react-table";
 import './styles/Table.scss';
 interface TableProps {
     data: any;
@@ -8,7 +8,7 @@ interface TableProps {
 export const Table: React.FC<TableProps> = (props) => {
     const options = { data: props.data, columns: props.columns };
 
-    const tableInstance = useTable({ ...options }, usePagination);
+    const tableInstance = useTable({ ...options }, useSortBy, usePagination);
     const {
         getTableProps,
         getTableBodyProps,
@@ -24,16 +24,20 @@ export const Table: React.FC<TableProps> = (props) => {
         prepareRow,
     } = tableInstance;
     const {pageIndex, pageSize} = state;
-
+    const arrowUp = ' ⬆'
+    const arrowDown = ' ⬇'
     return (
         <>
             <table {...getTableProps()} className="table">
                 <thead>
                     {headerGroups.map((headerGroup: any) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
+                        <tr {...headerGroup.getHeaderGroupProps()}> 
                             {headerGroup.headers.map((column: any) => (
-                                <th {...column.getHeaderProps()}>
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())} className={column.isSorted ? 'sorted' : 'normal'}>
                                     {column.render("Header")}
+                                    <span>
+                                        {column.isSorted ? (column.isSortedDesc ? arrowUp : arrowDown ) : ''}
+                                    </span>
                                 </th>
                             ))}
                         </tr>
@@ -46,7 +50,7 @@ export const Table: React.FC<TableProps> = (props) => {
                             <tr {...row.getRowProps()}>
                                 {row.cells.map((cell: any) => {
                                     return (
-                                        <td {...cell.getCellProps()}>
+                                        <td {...cell.getCellProps()} className={cell.column.isSorted ? "sorted-td" : "normal-td"} >
                                             {cell.render("Cell")}
                                         </td>
                                     );
@@ -57,7 +61,7 @@ export const Table: React.FC<TableProps> = (props) => {
                 </tbody>
             </table>
             <div className="table-footer">
-                    <button disabled={!canPreviousPage} onClick={() => previousPage()}>{'Previous'}</button>
+                <button disabled={!canPreviousPage} onClick={() => previousPage()}>{'<'}</button>
                 <span>
                     Page {' '}
                         <strong>{pageIndex + 1} of {pageOptions.length}</strong>
@@ -69,7 +73,7 @@ export const Table: React.FC<TableProps> = (props) => {
                                 }
                         </select>
                     </span>
-                <button disabled={!canNextPage} onClick={() => nextPage()}>{'Next'}</button>
+                    <button disabled={!canNextPage} onClick={() => nextPage()}>{'>'}</button>
             </div>
         </>
     );
