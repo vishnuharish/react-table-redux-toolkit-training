@@ -7,20 +7,9 @@ import { Table } from "../../utilities/Table";
 import { UserInfoTableColumns } from "./UserInforTableColumns";
 import "./styles/userInfoStyles.scss";
 export const Userinfo: React.FC<{}> = () => {
-    const dispatch: AppDispatch = useDispatch();
-    const userInfo: UserInfoState = useSelector(
-        (state: RootState) => state.user_info
-    );
-    // const {data, error, isLoading} = useGetAllUsersQuery('');
-    const { loading, data, error } = userInfo;
-    useEffect(() => {
-        dispatch(fetchAllUsers());
-    }, []);
-    useEffect(() => {
-        console.log(loading, data, error);
-    }, [loading, data, error]);
-    // useEffect(() => { console.log(userInfoData, userInfoLoading, userInfoError) }, [userInfoData, userInfoError, userInfoLoading])
-    const tableData = useMemo(() => data, [data]);
+     const {data, error, isLoading} = useGetAllUsersQuery(''); 
+     useEffect(() => { console.log(data, isLoading, error) }, [data, error, isLoading])
+    const tableData = useMemo(() => data ? data : [], [data]);
     const tableColumn = useMemo(() => UserInfoTableColumns, []);
     return (
         <div className="userInfo">
