@@ -6,7 +6,7 @@ export const userInfoApi = createApi({
     reducerPath: 'userInfoApi',
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3002/user_info'}),
     endpoints: (builder) => ({
-        getAllUsers: builder.query({
+        getAllUsers: builder.query<UserInfoState, string>({
             query: () => ''
         }),
     }),
