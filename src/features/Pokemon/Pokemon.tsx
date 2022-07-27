@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import "./styles/Pokemon.scss";
 import { useGetAllPokemonQuery, useGetPokemonByNameQuery } from './services/PokemonService';
+import {PokemonState} from './services/types/PokemonTypes';
 export const Pokemon: React.FC<{}> = () => {
     // const {data, error, isLoading} = useGetPokemonByNameQuery('bulbasaur');
-    const {data, error, isLoading} = useGetAllPokemonQuery('');
+    const {data, error, isLoading}:{data? :PokemonState, error?: any, isLoading: boolean} = useGetAllPokemonQuery('');
     return (
         <div className="pokemon-container">
             <div className="header">
