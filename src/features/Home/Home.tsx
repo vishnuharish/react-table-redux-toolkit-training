@@ -11,6 +11,7 @@ export const Home: React.FC<{}> = () => {
             <div className="content">
                 <Link className="link" to="/userinfo">Userinfo</Link>
                 <Link className="link" to="/pokemon">Pokemon</Link>
+                <Link className="link" to="/counter">Counter</Link>
             </div>
         </div>
     );

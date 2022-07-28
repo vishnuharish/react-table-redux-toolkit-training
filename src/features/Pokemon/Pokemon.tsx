@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import "./styles/Pokemon.scss";
-import { useGetAllPokemonQuery, useGetPokemonByNameQuery } from './services/PokemonService';
+import { useGetAllPokemonQuery} from './services/PokemonService';
 import {PokemonState} from './services/types/PokemonTypes';
 export const Pokemon: React.FC<{}> = () => {
     // const {data, error, isLoading} = useGetPokemonByNameQuery('bulbasaur');

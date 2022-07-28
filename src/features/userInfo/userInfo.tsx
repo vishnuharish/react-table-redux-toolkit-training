@@ -1,7 +1,4 @@
 import React, { useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../../store";
-import { fetchAllUsers, UserInfoState } from "./slices/userInfoSlice";
 import { useGetAllUsersQuery } from "./services/userInfoService";
 import { Table } from "../../utilities/Table";
 import { UserInfoTableColumns } from "./UserInforTableColumns";

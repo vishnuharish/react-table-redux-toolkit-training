@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk, Slice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk, Slice} from '@reduxjs/toolkit';
 
 const FETCH_ALL_USERS_TYPE = 'USER_INFO/FETCH_ALL_USERS';
 const BASE_URL = 'http://localhost:3002/user_info';
